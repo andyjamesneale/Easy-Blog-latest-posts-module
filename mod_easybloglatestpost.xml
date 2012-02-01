@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<install type="module" version="1.5.0" method="upgrade">
+	<name>EasyBlog Latest Post</name>
+	<author>StackIdeas</author>
+	<creationDate>May 2010</creationDate>
+	<copyright>Copyright 2009 - 2010 Stack Ideas. All rights reserved.</copyright>
+	<license>GPL License</license>
+	<authorEmail>support@stackideas.com</authorEmail>
+	<authorUrl>http://www.stackideas.com</authorUrl>
+	<version>3.0.1</version>
+	<description>Latest post module for your EasyBlog's component.</description>
+	<languages>
+		<language tag="en-GB">en-GB.mod_easybloglatestpost.ini</language>
+		<language tag="da-DK">da-DK.mod_easybloglatestpost.ini</language>
+		<language tag="fr-FR">fr-FR.mod_easybloglatestpost.ini</language>
+		<language tag="sv-SE">sv-SE.mod_easybloglatestpost.ini</language>
+	</languages>
+	<files>
+		<filename module="mod_easybloglatestpost">mod_easybloglatestpost.php</filename>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<folder>tmpl</folder>
+		<folder>assets</folder>
+	</files>
+	<params>
+		<param name="moduleclass_sfx" type="text" default="" label="Module Class Suffix" description="PARAMMODULECLASSSUFFIX" />
+		<param name="@spacer" type="spacer" default="" label="" description="" />
+		<param name="count" type="text" default="5" label="Count" description="The number of items to display (set it to 0 if post limiting if not required)." />
+		<param name="catid" type="text" label="Category ID" description="Only select blog posts from specific categories. Leave empty to select from all categories" />
+		<param name="usefeatured" type="list" default="0" label="Only pickup featured posts" description="If enabled, module will only fetch featured blog entries">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showintro" type="list" default="0" label="Content be taken from" description="Choose where should the module take the contents from">
+			<option value="0">Introtext</option>
+			<option value="1">Main content</option>
+		</param>
+		<param name="textcount" type="text" default="200" label="Total characters" description="Set the number of characters should be displayed (set 0 to disable truncating). Only applicable if you did not enable the option to only pickup featured post." />
+		<param name="showcontent" type="list" default="1" label="Show Contents of blog" description="If disabled, the contents of the blog would not be displayed in the module.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showauthor" type="list" default="1" label="Show Author of blog" description="If disabled, the author section will not be displayed.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showcommentcount" type="list" default="1" label="Show Comment Count" description="Show or hide the post's comment total count in the module.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showratings" type="list" default="1" label="Show Ratings" description="Show or hide the rating for the post">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showhits" type="list" default="1" label="Show Hits" description="Show or hide the hits.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showavatar" type="list" default="1" label="Show Blogger Avatar" description="Show or hide the post's blogger avatar.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showfeatureimage" type="list" default="1" label="Show Featured Image" description="Show or hide the post's featured image.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="showreadmore" type="list" default="1" label="Show Read More" description="Show or hide the read more link.">
+			<option value="0">No</option>
+			<option value="1">Yes</option>
+		</param>
+		<param name="author_position" type="list" default="bottom" label="Author Position" description="Set the position to display the author in">
+			<option value="top">Top</option>
+			<option value="bottom">Bottom</option>
+		</param>
+	</params>
+	<params group="advanced">
+		<param name="cache" type="list" default="0" label="Caching" description="Select whether to cache the content of this module">
+			<option value="1">Use global</option>
+			<option value="0">No caching</option>
+		</param>
+		<param name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
+	</params>
+
+
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="count"
+					type="text"
+					default="5"
+					label="Count"
+					description="The number of items to display (set it to 0 if post limiting if not required). Only applicable if you did not enable the option to only pickup featured post." />
+				<field
+					name="catid"
+					type="text"
+					default=""
+					label="Category ID"
+					description="Only select blog posts from specific categories. Leave empty to select from all categories" />
+				<field
+					name="usefeatured"
+					type="list"
+					default="0"
+					label="Only pickup featured posts"
+					description="If enabled, module will only fetch featured blog entries" >
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="showcontent" type="list" default="1" label="Show Contents of blog" description="If disabled, the contents of the blog would not be displayed in the module.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field
+					name="showintro"
+					type="list"
+					default="1"
+					label="Content be taken from"
+					description="Choose where should the module take the contents from." >
+					<option value="0">Introtext</option>
+					<option value="1">Main content</option>
+				</field>
+				<field
+					name="textcount"
+					type="text"
+					default="0"
+					label="Total characters"
+					description="Set the number of characters should be displayed (set 0 to disable truncating)" />
+				<field name="showcontent" type="list" default="1" label="Show Contents of blog" description="If disabled, the contents of the blog would not be displayed in the module.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="showauthor" type="list" default="1" label="Show Author of blog" description="If disabled, the author section will not be displayed.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field
+					name="showcommentcount"
+					type="list"
+					default="1"
+					label="Show Comment Count"
+					description="Show or hide the post's comment total count in the module." >
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="showratings" type="list" default="1" label="Show Ratings" description="Show or hide the rating for the post">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="showhits" type="list" default="1" label="Show Hits" description="Show or hide the hits.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field
+					name="showavatar"
+					type="list"
+					default="1"
+					label="Show Blogger Avatar"
+					description="Show or hide the post's blogger avatar." >
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field
+					name="showfeatureimage"
+					type="list"
+					default="1"
+					label="Show Featured Image"
+					description="Show or hide the post's featured image." >
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="showreadmore" type="list" default="1" label="Show Read More" description="Show or hide the read more link.">
+					<option value="0">No</option>
+					<option value="1">Yes</option>
+				</field>
+				<field name="author_position" type="list" default="bottom" label="Author Position" description="Set the position to display the author in">
+					<option value="top">Top</option>
+					<option value="bottom">Bottom</option>
+				</field>
+			</fieldset>
+			<fieldset name="advanced">
+				<field
+					name="moduleclass_sfx" type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="0"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC" >
+					<option value="1">JGLOBAL_USE_GLOBAL</option>
+					<option value="0">COM_MODULES_FIELD_VALUE_NOCACHING
+					</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+			</fieldset>
+		</fields>
+	</config>
+
+</install>
